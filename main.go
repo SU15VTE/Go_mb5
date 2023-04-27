@@ -5,6 +5,7 @@ import (
 	"strconv"
 )
 
+//定义常量，ABCD为标准幻数
 const (
 	A   = 0x67452301
 	B   = 0xefcdab89
@@ -177,7 +178,6 @@ func MD5(buf []uint32, x []uint32) []uint32 {
 	c = FF(c, d, a, b, x[14], S13, 0xa679438e)
 	b = FF(b, c, d, a, x[15], S14, 0x49b40821)
 
-	/* Round 2 */
 	a = GG(a, b, c, d, x[1], S21, 0xf61e2562)
 	d = GG(d, a, b, c, x[6], S22, 0xc040b340)
 	c = GG(c, d, a, b, x[11], S23, 0x265e5a51)
@@ -195,7 +195,6 @@ func MD5(buf []uint32, x []uint32) []uint32 {
 	c = GG(c, d, a, b, x[7], S23, 0x676f02d9)
 	b = GG(b, c, d, a, x[12], S24, 0x8d2a4c8a)
 
-	/* Round 3 */
 	a = HH(a, b, c, d, x[5], S31, 0xfffa3942)
 	d = HH(d, a, b, c, x[8], S32, 0x8771f681)
 	c = HH(c, d, a, b, x[11], S33, 0x6d9d6122)
@@ -213,7 +212,6 @@ func MD5(buf []uint32, x []uint32) []uint32 {
 	c = HH(c, d, a, b, x[15], S33, 0x1fa27cf8)
 	b = HH(b, c, d, a, x[2], S34, 0xc4ac5665)
 
-	/* Round 4 */
 	a = II(a, b, c, d, x[0], S41, 0xf4292244)
 	d = II(d, a, b, c, x[7], S42, 0x432aff97)
 	c = II(c, d, a, b, x[14], S43, 0xab9423a7)
@@ -238,6 +236,7 @@ func MD5(buf []uint32, x []uint32) []uint32 {
 	return buf
 }
 
+//md5加密
 func main() {
 	str := "Hello World"
 	b := StringToBinary(str)
